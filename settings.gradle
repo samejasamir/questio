@@ -1,4 +1,5 @@
 rootProject.name = 'questio'
 include 'common'
 include 'crawler-job'
+include 'model'
 
