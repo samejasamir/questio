@@ -6,6 +6,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.16.1'
 
     implementation project(':common')
+    implementation project(':model')
 }
 
 test {
