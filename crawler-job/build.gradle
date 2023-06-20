@@ -7,6 +7,7 @@ dependencies {
 
     implementation project(':common')
     implementation project(':model')
+    implementation project(':repository')
 }
 
 test {

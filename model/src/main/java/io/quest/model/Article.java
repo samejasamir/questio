@@ -1,10 +1,11 @@
 package io.quest.model;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document("articles")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
