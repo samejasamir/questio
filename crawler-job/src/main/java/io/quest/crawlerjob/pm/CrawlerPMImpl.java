@@ -30,7 +30,7 @@ public class CrawlerPMImpl implements CrawlerPM {
     @Override
     public void CrawlArticles() throws IOException {
         var articles = provider.GetArticleList();
-        for(Article seedArticle : articles) {
+        for (Article seedArticle : articles) {
             var art = crawler.Crawl(seedArticle, transformer);
         }
         articleRepo.SaveArticles(articles);
