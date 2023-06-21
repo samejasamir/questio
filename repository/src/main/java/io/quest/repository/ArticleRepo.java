@@ -5,11 +5,14 @@ import io.quest.model.Article;
 import java.util.List;
 
 public interface ArticleRepo {
-    List<Article> GetArticles();
+    List<Article> GetAllArticles();
 
-    void SaveArticles(List<Article> articles);
+    void InsertArticles(List<Article> articles);
 
     List<Article> GetArticlesByUrl(String url);
 
-    void SaveArticle(Article article);
+    void UpdateArticles(List<Article> articles);
+
+    List<Article> GetAllSeedArticles();
+
 }
