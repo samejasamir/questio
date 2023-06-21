@@ -3,4 +3,5 @@ include 'common'
 include 'crawler-job'
 include 'model'
 include 'repository'
+include 'summerizer-job'
 

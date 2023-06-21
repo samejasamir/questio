@@ -1,6 +1,5 @@
 package io.quest.crawlerjob.transformer;
 
-import io.quest.crawlerjob.provider.SeedArticleListProvider;
 import io.quest.model.Article;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

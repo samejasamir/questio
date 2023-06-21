@@ -1,6 +1,8 @@
 package io.quest.repository;
 
 import io.quest.model.Article;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -10,23 +12,27 @@ import java.util.List;
 
 @Repository
 public class ArticleRepoImpl implements ArticleRepo{
+
+    private static final Logger LOGGER = LogManager.getLogger(ArticleRepoImpl.class);
     private final MongoTemplate mt;
-    private static final String collection_name = "articles";
+    private static final String articles_collection_name = "articles";
+    private static final String seed_articles_collection_name = "articles_seed";
     private static final String col_articleURL = "articleURL";
 
 
     public ArticleRepoImpl(MongoTemplate mt) {
         this.mt = mt;
+        LOGGER.info("DATABASE NAME :: {}",mt.getDb().getName());
     }
 
     @Override
-    public List<Article> GetArticles() {
-        return mt.findAll(Article.class);
+    public List<Article> GetAllArticles() {
+        return mt.findAll(Article.class, articles_collection_name);
     }
 
     @Override
-    public void SaveArticles(List<Article> articles) {
-        mt.insert(articles, collection_name);
+    public void InsertArticles(List<Article> articles) {
+        mt.insert(articles, articles_collection_name);
     }
 
     @Override
@@ -35,7 +41,12 @@ public class ArticleRepoImpl implements ArticleRepo{
     }
 
     @Override
-    public void SaveArticle(Article article) {
+    public void UpdateArticles(List<Article> articles) {
+        articles.forEach(article ->  mt.save(article, articles_collection_name));
+    }
 
+    @Override
+    public List<Article> GetAllSeedArticles() {
+        return mt.findAll(Article.class, seed_articles_collection_name);
     }
 }
