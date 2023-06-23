@@ -4,6 +4,8 @@ repositories {
 
 dependencies {
     implementation 'com.azure:azure-identity:1.9.1'
+    implementation 'com.azure:azure-security-keyvault-secrets:4.6.2'
+
 }
 
 test {
