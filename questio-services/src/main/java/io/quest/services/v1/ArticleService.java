@@ -1,4 +1,4 @@
-package io.quest.services;
+package io.quest.services.v1;
 
 import io.quest.model.Article;
 import java.util.List;

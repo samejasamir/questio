@@ -1,4 +1,4 @@
-package io.quest.services;
+package io.quest.services.v1;
 
 import io.quest.model.Article;
 import io.quest.repository.ArticleRepo;
@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/articles")
-public class ArticleServiceImplV1 implements ArticleService {
+public class ArticleServiceImpl implements ArticleService {
 
-    private static final Logger LOGGER = LogManager.getLogger(ArticleServiceImplV1.class);
+    private static final Logger LOGGER = LogManager.getLogger(ArticleServiceImpl.class);
     private final ArticleRepo articleRepo;
 
-    public ArticleServiceImplV1(ArticleRepo articleRepo) {
+    public ArticleServiceImpl(ArticleRepo articleRepo) {
         this.articleRepo = articleRepo;
     }
 
