@@ -17,6 +17,7 @@ public class QuestSecretImpl implements QuestSecret{
 
     @Override
     public String GetSecretByName(String name) {
+        LOGGER.info("Getting secret {}", name);
         return secretClient.getSecret(name).getValue();
     }
 }

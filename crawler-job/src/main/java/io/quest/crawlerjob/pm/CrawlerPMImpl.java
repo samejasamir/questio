@@ -13,7 +13,6 @@ import java.io.IOException;
 
 @Service
 public class CrawlerPMImpl implements CrawlerPM {
-
     private static final Logger LOGGER = LogManager.getLogger(CrawlerPMImpl.class);
     private final ArticleListProvider provider;
     private final Crawler crawler;
@@ -29,10 +28,16 @@ public class CrawlerPMImpl implements CrawlerPM {
 
     @Override
     public void CrawlArticles() throws IOException {
+        LOGGER.info("Starting CrawlArticles");
         var articles = provider.GetArticleList();
-        for (Article seedArticle : articles) {
-            var art = crawler.Crawl(seedArticle, transformer);
-        }
+        LOGGER.info("Articles to crawl :: {}", articles == null ? "NULL" : articles.stream().count());
+        articles.forEach(article -> {
+            try {
+                crawler.Crawl(article, transformer);
+            } catch (IOException e) {
+                LOGGER.error(e);
+            }
+        });
         articleRepo.UpdateArticles(articles);
     }
 }

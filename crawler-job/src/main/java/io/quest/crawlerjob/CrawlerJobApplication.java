@@ -23,5 +23,8 @@ public class CrawlerJobApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception { crawlerPM.CrawlArticles(); }
+    public void run(String... args) throws Exception {
+        LOGGER.info("Initialized {}, running CrawlAricles", CrawlerJobApplication.class.getSimpleName());
+        crawlerPM.CrawlArticles();
+    }
 }

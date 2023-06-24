@@ -15,7 +15,6 @@ import java.util.List;
 
 @Service
 public class ArticleRepoImpl implements ArticleRepo{
-
     private static final Logger LOGGER = LogManager.getLogger(ArticleRepoImpl.class);
     private final MongoTemplate mt;
     private static final String articles_collection_name = "articles";
@@ -25,31 +24,47 @@ public class ArticleRepoImpl implements ArticleRepo{
 
     public ArticleRepoImpl(MongoTemplate mt) {
         this.mt = mt;
-        LOGGER.info("DATABASE NAME :: {}",mt.getDb().getName());
+        LOGGER.info("MongoDB Database Name :: {}",mt.getDb().getName());
     }
 
     @Override
     public List<Article> GetAllArticles() {
-        return mt.findAll(Article.class, articles_collection_name);
+        LOGGER.info("Invoking GetAllArticles...");
+        var all = mt.findAll(Article.class, articles_collection_name);
+        LOGGER.info("Invoking GetAllArticles SUCCESS :: {}", all == null ? "NULL" : all.stream().count());
+        return all;
     }
 
     @Override
     public void InsertArticles(List<Article> articles) {
+        LOGGER.info("Invoking InsertArticles :: {} ...", articles == null ? "NULL" : articles.stream().count());
         articles.forEach(article -> mt.insert(articles, articles_collection_name));
+        LOGGER.info("Invoking GetAllArticles SUCCESS!");
     }
 
     @Override
     public List<Article> GetArticlesByUrl(String url) {
-        return mt.find(new Query().addCriteria(Criteria.where(col_articleURL).is(url)), Article.class);
+        LOGGER.info("Invoking GetArticlesByUrl {} ...", url);
+        var val = mt.find(new Query().addCriteria(Criteria.where(col_articleURL).is(url)), Article.class);
+        LOGGER.info("Invoking GetArticlesByUrl SUCCESS :: {} ...", val == null ? "NULL" : val.stream().count());
+        return val;
     }
 
     @Override
     public void UpdateArticles(List<Article> articles) {
-        articles.forEach(article ->  mt.save(article, articles_collection_name));
+        LOGGER.info("Invoking UpdateArticles {} ...", articles == null ? "NULL" : articles.stream().count());
+        articles.forEach(article -> {
+            LOGGER.info("Saving {}", article.getArticleURL());
+            mt.save(article, articles_collection_name);
+            LOGGER.info("Saving SUCCESS! {}", article.getArticleURL());
+        });
     }
 
     @Override
     public List<Article> GetAllSeedArticles() {
-        return mt.findAll(Article.class, seed_articles_collection_name);
+        LOGGER.info("Invoking GetAllSeedArticles...");
+        var all = mt.findAll(Article.class, seed_articles_collection_name);
+        LOGGER.info("Invoking GetAllSeedArticles SUCCESS! :: {} ...", all == null ? "NULL" : all.stream().count());
+        return all;
     }
 }
