@@ -35,7 +35,7 @@ public class ArticleRepoImpl implements ArticleRepo{
 
     @Override
     public void InsertArticles(List<Article> articles) {
-        mt.insert(articles, articles_collection_name);
+        articles.forEach(article -> mt.insert(articles, articles_collection_name));
     }
 
     @Override

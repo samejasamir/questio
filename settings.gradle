@@ -4,4 +4,5 @@ include 'crawler-job'
 include 'model'
 include 'repository'
 include 'summerizer-job'
+include 'questio-services'
 
