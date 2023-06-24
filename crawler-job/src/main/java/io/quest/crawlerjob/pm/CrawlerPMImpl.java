@@ -33,6 +33,6 @@ public class CrawlerPMImpl implements CrawlerPM {
         for (Article seedArticle : articles) {
             var art = crawler.Crawl(seedArticle, transformer);
         }
-        articleRepo.InsertArticles(articles);
+        articleRepo.UpdateArticles(articles);
     }
 }

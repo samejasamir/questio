@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "io.quest")
 public class CrawlerJobApplication implements CommandLineRunner {
-    private static final Logger LOG = LogManager.getLogger(CrawlerJobApplication.class);
+    private static final Logger LOGGER = LogManager.getLogger(CrawlerJobApplication.class);
     private final CrawlerPM crawlerPM;
 
     public CrawlerJobApplication(CrawlerPM crawlerPM) {
