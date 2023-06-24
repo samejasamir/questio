@@ -24,5 +24,8 @@ public class SummerizerJobApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception { researchArticleSummerizer.Summerize(); }
+    public void run(String... args) throws Exception {
+        LOGGER.info("Starting {} ...", SummerizerJobApplication.class.getSimpleName());
+        researchArticleSummerizer.Summerize();
+    }
 }

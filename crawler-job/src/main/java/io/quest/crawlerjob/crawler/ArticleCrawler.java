@@ -15,7 +15,9 @@ public class ArticleCrawler implements Crawler {
 
     @Override
     public Article Crawl(Article article, Transformer transformer) throws IOException {
+        LOGGER.info("Crawling :: {}", article.getArticleURL());
         article.setArticleRaw(Jsoup.connect(article.getArticleURL()).get().text());
+        LOGGER.info("Crawling SUCCESS! :: {}", article.getArticleURL());
         return transformer != null ? transformer.Transform(article) : article;
     }
 

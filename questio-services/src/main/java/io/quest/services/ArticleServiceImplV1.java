@@ -22,7 +22,9 @@ public class ArticleServiceImplV1 implements ArticleService {
 
     @Override
     @GetMapping(value = "/all", produces = "application/json")
-    public List<Article> GetAllArticles() {
+    public List<Article> GetAllArticles()
+    {
+        LOGGER.info("Invoking GetAllArticles operation...");
         return articleRepo.GetAllArticles();
     }
 }
