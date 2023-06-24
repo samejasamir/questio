@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("articles")
-public class ArticleServiceImpl implements ArticleService {
+@RequestMapping("v1/articles")
+public class ArticleServiceImplV1 implements ArticleService {
 
-    private static final Logger LOGGER = LogManager.getLogger(ArticleServiceImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(ArticleServiceImplV1.class);
     private final ArticleRepo articleRepo;
 
-    public ArticleServiceImpl(ArticleRepo articleRepo) {
+    public ArticleServiceImplV1(ArticleRepo articleRepo) {
         this.articleRepo = articleRepo;
     }
 
