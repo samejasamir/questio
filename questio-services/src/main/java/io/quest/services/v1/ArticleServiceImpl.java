@@ -25,6 +25,10 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> GetAllArticles()
     {
         LOGGER.info("Invoking GetAllArticles operation...");
-        return articleRepo.GetAllArticles();
+        var retVal = articleRepo.GetAllArticles();
+
+        // No need to send raw article back to UI
+        retVal.forEach(article -> article.setArticleRaw(null));
+        return retVal;
     }
 }
