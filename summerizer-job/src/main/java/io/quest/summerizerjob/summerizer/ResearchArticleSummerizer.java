@@ -47,6 +47,11 @@ public class ResearchArticleSummerizer implements ArticleSummerizer {
                 .build();
         var choices = service.createCompletion(completionRequest).getChoices();
         LOGGER.info("Obtained choices :: {} ...",  choices == null? "NULL": choices.stream().count());
-        article.setArticleSummary(choices.get(0).getText());
+
+        var choice = choices.get(0).getText()
+                        .replace(":","")
+                        .replace("\n","");
+
+        article.setArticleSummary(choice);
     }
 }

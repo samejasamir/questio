@@ -29,7 +29,11 @@ public class Article {
 
     @Getter
     @Setter
-    private Date articleDated = null;
+    private String articleTitle;
+
+    @Getter
+    @Setter
+    private Date articleCrawlDate = null;
 
     @Getter
     @Setter
