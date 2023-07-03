@@ -23,24 +23,3 @@ public class SeedArticleListDBProvider implements ArticleListProvider {
         return articleRepo.GetAllSeedArticles();
     }
 }
-
-//    {
-//        "mediaHouse": "Morgan Stanley",
-//            "articleURL": "https://www.morganstanley.com/ideas/earnings-recession-2023-rebound-2024",
-//            "articleCategory": "Economic Outlook",
-//            "_class": "io.quest.model.Article"
-//    }
-//
-//    {
-//        "mediaHouse": "JP Morgan",
-//            "articleURL": "https://www.jpmorgan.com/insights/research/summer-travel-outlook",
-//            "articleCategory": "Economic Outlook",
-//            "_class": "io.quest.model.Article"
-//    }
-//
-//    {
-//        "mediaHouse": "Goldman Sachs",
-//            "articleURL": "https://www.goldmansachs.com/intelligence/pages/why-a-us-recession-has-become-less-likely.html",
-//            "articleCategory": "Economic Outlook",
-//            "_class": "io.quest.model.Article"
-//    }
